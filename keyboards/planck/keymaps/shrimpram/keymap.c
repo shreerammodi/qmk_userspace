@@ -24,13 +24,6 @@ enum planck_layers {
     _MEDIA
 };
 
-enum planck_keycodes {
-    COLEMAK = SAFE_RANGE,
-    QWERTY,
-    NUM,
-    SYM,
-    MEDIA
-};
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
@@ -40,20 +33,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Colemak
  * ,---------------------------------------------------------------------------------------------.
- * |     Tab     |  Q   |    W     |  F   |  P   |  G   |  J   |  L   |  U   |  Y   |  ;   | Bksp    |
- * |-------------+------+----------+------+------+------+------+------+------+------+------+---------|
- * |     Bksp    |  A   |    R     |  S   |  T   |  D   |  H   |  N   |  E   |  I   |  O   | '       |
- * |-------------+------+----------+------+------+------+------+------+------+------+------+---------|
- * | Shift(Enter)|  Z   |    X     |  C   |  V   |  B   |  K   |  M   |  ,   |  .   |  Up  | Shift(/)|
- * |-------------+------+----------+------+------+------+------+------+------+------+------+---------|
- * |     Ctrl    | Alt  | MO(MEDIA)| Cmd  | TT(NUM)|    Space    | TT(SYM)| Enter| Left | Down | Right   |
+ * |     Tab     |  Q   |  W   |  F   |  P   |  G   |  J   |  L   |  U   |  Y   |  ;   | Bksp    |
+ * |-------------+------+------+------+------+------+------+------+------+------+------+---------|
+ * |     Bksp    |  A   |  R   |  S   |  T   |  D   |  H   |  N   |  E   |  I   |  O   | '       |
+ * |-------------+------+------+------+------+------+------+------+------+------+------+---------|
+ * | Shift(Enter)|  Z   |  X   |  C   |  V   |  B   |  K   |  M   |  ,   |  .   |  Up  | Shift(/)|
+ * |-------------+------+------+------+------+------+------+------+------+------+------+---------|
+ * |     Ctrl    | Alt  | MO(4)| Cmd  | TT(2)|    Space    | TT(3)| Enter| Left | Down | Right   |
  * `---------------------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_planck_1x2uC(
     KC_TAB,         KC_Q,    KC_W,  KC_F,    KC_P,  KC_G,   KC_J,  KC_L,   KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
     KC_BSPC,        KC_A,    KC_R,  KC_S,    KC_T,  KC_D,   KC_H,  KC_N,   KC_E,    KC_I,    KC_O,    KC_QUOT,
     LSFT_T(KC_ESC), KC_Z,    KC_X,  KC_C,    KC_V,  KC_B,   KC_K,  KC_M,   KC_COMM, KC_DOT,  KC_UP,   RSFT_T(KC_SLSH),
-    KC_LCTL,        KC_LALT, MO(MEDIA), KC_LGUI, TT(NUM), KC_SPC, TT(SYM), KC_ENT, KC_LEFT, KC_DOWN, KC_RGHT
+    KC_LCTL,        KC_LALT, MO(4), KC_LGUI, TT(2), KC_SPC, TT(3), KC_ENT, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Qwerty
@@ -118,14 +111,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Brt- | Ins  | Brt+ |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |  TG(Qwerty) |      |      |      |      |      |
+ * |      |      |      |      |      |    TG(1)    |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_MEDIA] = LAYOUT_planck_1x2uC(
     KC_GRV,  KC_MPRV, KC_MPLY, KC_MNXT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_VOLD, KC_MUTE, KC_VOLU, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_BRID, KC_INS,  KC_BRIU, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TG(QWERTY),   KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_END
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TG(1),   KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_END
 )
 
 };
