@@ -11,7 +11,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * │ESC/LS │   Z   │   X   │   C   │   V   │   B   │                    │   N   │   M   │   ,   │   .   │   /   │  RSFT │
      * └───────┴───────┴───────┴───────┴───────┴───────┘                    └───────┴───────┴───────┴───────┴───────┴───────┘
      *                         ┌───────┬───────┬───────┐                    ┌───────┬───────┬───────┐
-     *                         │ MO(1) │  ALT  │ MO(1) │                    │  SPC  │   ⌘   │ MO(2) │
+     *                         │ MO(1) │   ⌘   │ MO(1) │                    │  SPC  │  ALT  │ MO(2) │
      *                         └───────┴───────┴───────┘                    └───────┴───────┴───────┘
      */
 
@@ -19,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LCTL_T(KC_TAB), KC_Q, KC_W, KC_E, KC_R, KC_T,        KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
                  TT(3), KC_A, KC_S, KC_D, KC_F, KC_G,        KC_H, KC_J, KC_K, KC_L, KC_SCLN, LCTL_T(KC_QUOT),
               LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V,        KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_ESC),
-                              MO(1), KC_LALT, KC_ENT,        KC_SPC, KC_LGUI, MO(2)
+                              MO(1), KC_LGUI, KC_ENT,        KC_SPC, KC_RALT, MO(2)
     ),
 
 
