@@ -25,11 +25,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
      * ┌───────┬───────┬───────┬───────┬───────┬───────┐                    ┌───────┬───────┬───────┬───────┬───────┬───────┐
-     * │   `   │  F1   │  F2   │  F3   │  F4   │  NO   │                    │  NO   │   7   │   8   │   9   │   -   │  TRNS │
+     * │   `   │  F1   │  F2   │  F3   │  F4   │  NO   │                    │   *   │   7   │   8   │   9   │   +   │  TRNS │
      * ├───────┼───────┼───────┼───────┼───────┼───────┤                    ├───────┼───────┼───────┼───────┼───────┼───────┤
-     * │ TRNS  │  F5   │  F6   │  F7   │  F8   │  NO   │                    │   *   │   4   │   5   │   6   │   =   │   +   │
+     * │ TRNS  │  F5   │  F6   │  F7   │  F8   │  NO   │                    │   -   │   4   │   5   │   6   │   =   │  TRNS │
      * ├───────┼───────┼───────┼───────┼───────┼───────┤                    ├───────┼───────┼───────┼───────┼───────┼───────┤
-     * │ TRNS  │  F9   │  F10  │  F11  │  F12  │  NO   │                    │  NO   │   1   │   2   │   3   │   .   │   /   │
+     * │ TRNS  │  F9   │  F10  │  F11  │  F12  │  NO   │                    │   /   │   1   │   2   │   3   │   .   │  TRNS │
      * └───────┴───────┴───────┴───────┴───────┴───────┘                    └───────┴───────┴───────┴───────┴───────┴───────┘
      *                         ┌───────┬───────┬───────┐                    ┌───────┬───────┬───────┐
      *                         │ TRNS  │ TRNS  │ TRNS  │                    │ TRNS  │ TRNS  │   0   │
@@ -37,9 +37,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 
     [1] = LAYOUT_split_3x6_3(
-            KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_NO,        KC_NO, KC_7, KC_8, KC_9, KC_MINS, KC_TRNS,
-           KC_TRNS, KC_F5, KC_F6, KC_F7, KC_F8, KC_NO,        KC_PAST, KC_4, KC_5, KC_6, KC_EQL, KC_PPLS,
-        KC_TRNS, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO,        KC_NO, KC_1, KC_2, KC_3, KC_PDOT, KC_PSLS,
+            KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_NO,        KC_PAST, KC_7, KC_8, KC_9, KC_PPLS, KC_TRNS,
+           KC_TRNS, KC_F5, KC_F6, KC_F7, KC_F8, KC_NO,        KC_MINS, KC_4, KC_5, KC_6, KC_EQL, KC_TRNS,
+        KC_TRNS, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO,        KC_PSLS, KC_1, KC_2, KC_3, KC_PDOT, KC_TRNS,
                             KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_0
     ),
 
