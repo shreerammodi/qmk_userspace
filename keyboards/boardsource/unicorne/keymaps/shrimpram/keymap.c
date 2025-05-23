@@ -1,62 +1,25 @@
 #include QMK_KEYBOARD_H
 
-enum custom_keycodes {
-    HYPR_TG3 = SAFE_RANGE,
-};
-
-static uint16_t hyper_timer;      // remembers when the key went down
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-
-        case HYPR_TG3:
-            if (record->event.pressed) {               // ① key down
-                hyper_timer = timer_read();
-
-                /* Start holding Hyper immediately so window-manager
-                   shortcuts work while we’re still deciding.           */
-                register_code(KC_LCTL);
-                register_code(KC_LSFT);
-                register_code(KC_LALT);
-                register_code(KC_LGUI);
-
-            } else {                                   // ② key up
-                unregister_code(KC_LCTL);
-                unregister_code(KC_LSFT);
-                unregister_code(KC_LALT);
-                unregister_code(KC_LGUI);
-
-                /* If the press was shorter than the tapping window,
-                   treat it as a tap → toggle Layer 3.                  */
-                if (timer_elapsed(hyper_timer) < 100) {
-                    layer_invert(3);
-                }
-            }
-            return false;      // we handled everything – stop further processing
-    }
-    return true;               // let QMK handle other keycodes
-}
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
      * ┌───────┬───────┬───────┬───────┬───────┬───────┐                    ┌───────┬───────┬───────┬───────┬───────┬───────┐
      * │  TAB  │   Q   │   W   │   E   │   R   │   T   │                    │   Y   │   U   │   I   │   O   │   P   │ BSPC  │
      * ├───────┼───────┼───────┼───────┼───────┼───────┤                    ├───────┼───────┼───────┼───────┼───────┼───────┤
-     * │HYPR/3 │   A   │   S   │   D   │   F   │   G   │                    │   H   │   J   │   K   │   L   │   ;   │   '   │
+     * │ TT(3) │   A   │   S   │   D   │   F   │   G   │                    │   H   │   J   │   K   │   L   │   ;   │   '   │
      * ├───────┼───────┼───────┼───────┼───────┼───────┤                    ├───────┼───────┼───────┼───────┼───────┼───────┤
      * │ESC/LS │   Z   │   X   │   C   │   V   │   B   │                    │   N   │   M   │   ,   │   .   │   /   │ESC/RS │
      * └───────┴───────┴───────┴───────┴───────┴───────┘                    └───────┴───────┴───────┴───────┴───────┴───────┘
      *                         ┌───────┬───────┬───────┐                    ┌───────┬───────┬───────┐
-     *                         │   ⌘   │ MO(1) │  ENT  │                    │  SPC  │ MO(2) │  ALT  │
+     *                         │   ⌘   │ MO(1) │HYP/ENT│                    │  SPC  │ MO(2) │  ALT  │
      *                         └───────┴───────┴───────┘                    └───────┴───────┴───────┘
      */
 
     [0] = LAYOUT_split_3x6_3(
           KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,        KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
-        HYPR_TG3, KC_A, KC_S, KC_D, KC_F, KC_G,        KC_H, KC_J, KC_K, KC_L, KC_SCLN, LCTL_T(KC_QUOT),
+           TT(3), KC_A, KC_S, KC_D, KC_F, KC_G,        KC_H, KC_J, KC_K, KC_L, KC_SCLN, LCTL_T(KC_QUOT),
         LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V,        KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_ESC),
-                        KC_LGUI, TT(1), KC_ENT,        KC_SPC, TT(2), KC_RALT
+                KC_LGUI, TT(1), HYPR_T(KC_ENT),        KC_SPC, TT(2), KC_RALT
     ),
 
 
