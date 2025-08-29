@@ -1,5 +1,13 @@
 #include QMK_KEYBOARD_H
 
+enum layer_names {
+    _QWERTY,
+    _COLEMAK,
+    _NUM,
+    _SYM,
+    _NAV,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
@@ -15,11 +23,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                         └───────┴───────┴───────┘                    └───────┴───────┴───────┘
      */
 
-    [0] = LAYOUT_split_3x6_3(
+    [_QWERTY] = LAYOUT_split_3x6_3(
           KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,        KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
-           TT(3), KC_A, KC_S, KC_D, KC_F, KC_G,        KC_H, KC_J, KC_K, KC_L, KC_SCLN, LCTL_T(KC_QUOT),
+           TT(_NAV), KC_A, KC_S, KC_D, KC_F, KC_G,        KC_H, KC_J, KC_K, KC_L, KC_SCLN, LCTL_T(KC_QUOT),
         LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V,        KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_ESC),
-                KC_LGUI, TT(1), HYPR_T(KC_ENT),        KC_SPC, TT(2), KC_RALT
+                KC_LGUI, TT(_NUM), HYPR_T(KC_ENT),        KC_SPC, TT(_SYM), KC_RALT
     ),
 
 
@@ -36,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                         └───────┴───────┴───────┘                    └───────┴───────┴───────┘
     */
 
-    [1] = LAYOUT_split_3x6_3(
+    [_NUM] = LAYOUT_split_3x6_3(
             KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_NO,        KC_NO, KC_7, KC_8, KC_9, KC_MINS, KC_TRNS,
            KC_TRNS, KC_F5, KC_F6, KC_F7, KC_F8, KC_NO,        KC_PAST, KC_4, KC_5, KC_6, KC_PPLS, KC_EQL,
         KC_TRNS, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO,        KC_PDOT, KC_1, KC_2, KC_3, KC_PSLS, KC_PDOT,
@@ -58,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
 
-    [2] = LAYOUT_split_3x6_3(
+    [_SYM] = LAYOUT_split_3x6_3(
          KC_GRV, KC_TRNS, KC_LBRC, KC_BSLS, KC_RBRC, KC_NO,        KC_NO, KC_AMPR, KC_ASTR, KC_MINS, KC_TRNS, KC_DEL,
         KC_TRNS, KC_TRNS, KC_LPRN, KC_UNDS, KC_RPRN, KC_NO,        KC_NO, KC_DLR,  KC_PERC, KC_CIRC, KC_EQL,  KC_TRNS,
         KC_TRNS, KC_TRNS, KC_LCBR, KC_PIPE, KC_RCBR, KC_NO,        KC_NO, KC_EXLM, KC_AT,   KC_HASH, KC_TRNS, KC_TRNS,
@@ -78,13 +86,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                         └───────┴───────┴───────┘                    └───────┴───────┴───────┘
      */
 
-    [3] = LAYOUT_split_3x6_3(
-        QK_BOOT, KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_BRMU,        KC_PGUP, KC_HOME, KC_UP, KC_END, KC_NO, KC_TRNS,
-        KC_TRNS, KC_NO, KC_LCTL, KC_LALT, KC_LSFT, KC_BRMD,        KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO,
+    [_NAV] = LAYOUT_split_3x6_3(
+        QK_BOOT, KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_BRMU,        KC_PGUP, KC_HOME, KC_UP, KC_END, KC_NO, DF(_QWERTY),
+        KC_TRNS, KC_NO, KC_LCTL, KC_LALT, KC_LSFT, KC_BRMD,        KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, DF(_COLEMAK),
           KC_TRNS, KC_NO, KC_MUTE, KC_VOLD, KC_VOLU, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
                                  KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS
-    )
+    ),
 
+    /*
+     * ┌───────┬───────┬───────┬───────┬───────┬───────┐                    ┌───────┬───────┬───────┬───────┬───────┬───────┐
+     * │  TAB  │   Q   │   W   │   F   │   P   │   G   │                    │   J   │   L   │   U   │   Y   │   :   │ BSPC  │
+     * ├───────┼───────┼───────┼───────┼───────┼───────┤                    ├───────┼───────┼───────┼───────┼───────┼───────┤
+     * │ TT(3) │   A   │   R   │   S   │   T   │   D   │                    │   H   │   N   │   E   │   I   │   O   │   '   │
+     * ├───────┼───────┼───────┼───────┼───────┼───────┤                    ├───────┼───────┼───────┼───────┼───────┼───────┤
+     * │ESC/LS │   Z   │   X   │   C   │   V   │   B   │                    │   K   │   M   │   ,   │   .   │   /   │ESC/RS │
+     * └───────┴───────┴───────┴───────┴───────┴───────┘                    └───────┴───────┴───────┴───────┴───────┴───────┘
+     *                         ┌───────┬───────┬───────┐                    ┌───────┬───────┬───────┐
+     *                         │   ⌘   │ MO(1) │HYP/ENT│                    │  SPC  │ MO(2) │  ALT  │
+     *                         └───────┴───────┴───────┘                    └───────┴───────┴───────┘
+     */
 
+    [_COLEMAK] = LAYOUT_split_3x6_3(
+          KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G,        KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC,
+           TT(_NAV), KC_A, KC_R, KC_S, KC_T, KC_D,        KC_H, KC_N, KC_E, KC_I, KC_O, LCTL_T(KC_QUOT),
+        LSFT_T(KC_ESC), KC_Z, KC_X, KC_C, KC_V,        KC_B, KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_ESC),
+                KC_LGUI, TT(_NUM), HYPR_T(KC_ENT),        KC_SPC, TT(_SYM), KC_RALT
+    ),
 
 };
