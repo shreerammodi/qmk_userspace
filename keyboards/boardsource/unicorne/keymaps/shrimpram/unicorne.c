@@ -18,16 +18,16 @@ bool oled_task_user() {
 
     // Switch on current active layer
     switch (get_highest_layer(layer_state)) {
-        case 0 :
+        case 0:
             oled_write("Main Layer", false);
             break;
-        case 1 :
+        case 1:
             oled_write("Function Layer", false);
             break;
-        case 2 :
+        case 2:
             oled_write("Num Layer", false);
             break;
-        case 3 :
+        case 3:
             oled_write("Media Layer", false);
             break;
     }
