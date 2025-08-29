@@ -75,9 +75,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
      * ┌───────┬───────┬───────┬───────┬───────┬───────┐                    ┌───────┬───────┬───────┬───────┬───────┬───────┐
-     * │QK_BOOT│  NO   │ MPRV  │ MPLY  │ MNXT  │ BRMU  │                    │ PGUP  │ HOME  │  UP   │  END  │  NO   │  NO   │
+     * │QK_BOOT│  NO   │ MPRV  │ MPLY  │ MNXT  │ BRMU  │                    │ PGUP  │ HOME  │  UP   │  END  │  NO   │QWERTY │
      * ├───────┼───────┼───────┼───────┼───────┼───────┤                    ├───────┼───────┼───────┼───────┼───────┼───────┤
-     * │  NO   │  NO   │ LCTL  │ LALT  │ LSFT  │ BRMD  │                    │ PGDN  │ LEFT  │ DOWN  │ RGHT  │  NO   │  NO   │
+     * │  NO   │  NO   │ LCTL  │ LALT  │ LSFT  │ BRMD  │                    │ PGDN  │ LEFT  │ DOWN  │ RGHT  │  NO   │ CLMK  │
      * ├───────┼───────┼───────┼───────┼───────┼───────┤                    ├───────┼───────┼───────┼───────┼───────┼───────┤
      * │  NO   │  NO   │ MUTE  │ VOLD  │ VOLU  │  NO   │                    │  NO   │  NO   │  NO   │  NO   │  NO   │  NO   │
      * └───────┴───────┴───────┴───────┴───────┴───────┘                    └───────┴───────┴───────┴───────┴───────┴───────┘
