@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Extend
  * ,-----------------------------------------------------------------------------------.
- * |      |      | Prev | Pause| Next | Brt+ | PgUp | Home |  Up  | End  |      |      |
+ * |      |      | Prev | Pause| Next | Brt+ | PgUp | Home |  Up  | End  |      | TG(0)|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | HYPR | Ctrl | Alt  | Shft | Brt- | PgDn | Left | Down | Right|      | TG(1)|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [4] = LAYOUT_planck_1x2uC(
-    KC_TRNS, KC_TRNS, KC_MPRV, KC_MPLY, KC_MNXT, KC_BRMU, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_MPRV, KC_MPLY, KC_MNXT, KC_BRMU, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_TRNS, TG(0),
     KC_TRNS, KC_HYPR, KC_LCTL, KC_LALT, KC_LSFT, KC_BRMD, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, TG(1),
     KC_TRNS, KC_TRNS, KC_MUTE, KC_VOLD, KC_VOLU, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
